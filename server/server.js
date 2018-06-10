@@ -20,6 +20,11 @@ console.log('New client connected')
 
     socket.on('createMessage', (newMessage) => {
         console.log('New message',newMessage)
+        io.emit('newMessage',{
+            from : newMessage.from,
+            text : newMessage.text,
+            createdAt : new Date().getTime()
+        })
     })
 
     socket.emit('newMessage',{
@@ -27,7 +32,6 @@ console.log('New client connected')
         text : "Hey you got a new message",
         createdAt : 123456
     })
-
 
 })
 
