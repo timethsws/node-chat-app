@@ -17,6 +17,18 @@ console.log('New client connected')
     socket.on('disconnect',() => {
         console.log('Client disconnected')
     })
+
+    socket.on('createMessage', (newMessage) => {
+        console.log('New message',newMessage)
+    })
+
+    socket.emit('newMessage',{
+        from : "Timeth",
+        text : "Hey you got a new message",
+        createdAt : 123456
+    })
+
+
 })
 
 server.listen(port ,() => {
