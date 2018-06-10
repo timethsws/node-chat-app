@@ -22,7 +22,7 @@ describe('generateLocationMessage', () => {
         var from = 'Timeth';
         var lat = 1234567890;
         var lng = 1234567890
-        var url = `https//www.google.com/maps?q=${lat},${lng}`
+        var url = `https://www.google.com/maps?q=${lat},${lng}`
         
         var res = generateLocationMessage(from,lat,lng);
 
