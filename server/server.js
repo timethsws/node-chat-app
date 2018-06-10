@@ -34,11 +34,7 @@ console.log('New client connected')
     socket.on ('createLocationMessage', (coords)=> {
         io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude))
     })
-    socket.emit('newMessage',{
-        from : "Timeth",
-        text : "Hey you got a new message",
-        createdAt : 123456
-    })
+    
 
 })
 
