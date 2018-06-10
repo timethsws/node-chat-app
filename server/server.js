@@ -24,17 +24,17 @@ console.log('New client connected')
         console.log('Client disconnected')
     })
 
-    socket.on('createMessage', (newMessage) => {
+    socket.on('createMessage', (newMessage , callback) => {
         console.log('New message',newMessage)
-        io.emit('newMessage',generateMessage(newMessage.from,newMessage.text))
-
+        io.emit('newMessage',generateMessage(newMessage.from,newMessage.text));
+        callback('this from the server')
         // socket.broadcast.emit('newMessage',{
         //     rom : newMessage.to,
         //     text : newMessage .text,
         //     createdAt : new Date().getTime()
 
         // })
-    })
+    }) 
 
     socket.emit('newMessage',{
         from : "Timeth",
