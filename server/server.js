@@ -3,7 +3,7 @@ const path = require('path')
 const http = require('http')
 const socketIO = require('socket.io')
 
-var {generateMessage} = require('./utils/message')
+var {generateMessage,generateLocationMessage} = require('./utils/message')
 var publicPath = path.join(__dirname,'../public')
 const port = process.env.PORT || 3000
 var app = express();
@@ -28,14 +28,12 @@ console.log('New client connected')
         console.log('New message',newMessage)
         io.emit('newMessage',generateMessage(newMessage.from,newMessage.text));
         callback('this from the server')
-        // socket.broadcast.emit('newMessage',{
-        //     rom : newMessage.to,
-        //     text : newMessage .text,
-        //     createdAt : new Date().getTime()
-
-        // })
+        
     }) 
 
+    socket.on ('createLocationMessage', (coords)=> {
+        io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude))
+    })
     socket.emit('newMessage',{
         from : "Timeth",
         text : "Hey you got a new message",
