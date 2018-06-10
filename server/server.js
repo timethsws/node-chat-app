@@ -21,8 +21,8 @@ console.log('New client connected')
     socket.on('createMessage', (newMessage) => {
         console.log('New message',newMessage)
         io.emit('newMessage',{
-            from : newMessage.from,
-            text : newMessage.text,
+            from : newMessage.to,
+            text : newMessage .text,
             createdAt : new Date().getTime()
         })
     })
